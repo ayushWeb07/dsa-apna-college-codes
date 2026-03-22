@@ -17,7 +17,7 @@ void displayNums(int arr[], int n) {
     }
 }
 
-int calcMaxSubarraySum(int arr[], int n) {
+int calcMaxSubarraySum_v1(int arr[], int n) {
     int maxSum= INT_MIN, sum;
 
     for (int i= 0; i<n; i++) {
@@ -28,6 +28,21 @@ int calcMaxSubarraySum(int arr[], int n) {
                 sum+= arr[k];
             }
 
+            maxSum= max(maxSum, sum);
+        }
+    }
+
+    return maxSum;
+}
+
+int calcMaxSubarraySum_v2(int arr[], int n) {
+    int maxSum= INT_MIN, sum;
+
+    for (int i= 0; i<n; i++) {
+        sum= 0;
+
+        for(int j=i; j<n; j++) {
+            sum+= arr[j];
             maxSum= max(maxSum, sum);
         }
     }
@@ -51,6 +66,6 @@ int main() {
     displayNums(nums, n);
     
     // get the max subarray sum
-    int maxSum= calcMaxSubarraySum(nums, n);
+    int maxSum= calcMaxSubarraySum_v2(nums, n);
     cout << "\n\nMax subarray sum: " << maxSum;
 }
