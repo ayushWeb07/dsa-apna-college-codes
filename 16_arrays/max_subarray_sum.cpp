@@ -17,6 +17,7 @@ void displayNums(int arr[], int n) {
     }
 }
 
+// O(n^3)
 int calcMaxSubarraySum_v1(int arr[], int n) {
     int maxSum= INT_MIN, sum;
 
@@ -35,6 +36,7 @@ int calcMaxSubarraySum_v1(int arr[], int n) {
     return maxSum;
 }
 
+// O(n^2)
 int calcMaxSubarraySum_v2(int arr[], int n) {
     int maxSum= INT_MIN, sum;
 
@@ -44,6 +46,22 @@ int calcMaxSubarraySum_v2(int arr[], int n) {
         for(int j=i; j<n; j++) {
             sum+= arr[j];
             maxSum= max(maxSum, sum);
+        }
+    }
+
+    return maxSum;
+}
+
+// kadane's algo -> O(n)
+int calcMaxSubarraySum_v3(int arr[], int n) {
+    int maxSum= INT_MIN, sum= 0;
+
+    for (int i= 0; i<n; i++) {
+        sum+= arr[i];
+        maxSum= max(maxSum, sum);
+
+        if(sum < 0) {
+            sum= 0;
         }
     }
 
@@ -66,6 +84,6 @@ int main() {
     displayNums(nums, n);
     
     // get the max subarray sum
-    int maxSum= calcMaxSubarraySum_v2(nums, n);
+    int maxSum= calcMaxSubarraySum_v3(nums, n);
     cout << "\n\nMax subarray sum: " << maxSum;
 }
