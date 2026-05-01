@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <algorithm>
 #include <climits>
 
@@ -17,7 +16,7 @@ void displayNums(int arr[], int n) {
     }
 }
 
-// O(n^3)
+// version 1 -> bruteforce with TC O(n^3)
 int calcMaxSubarraySum_v1(int arr[], int n) {
     int maxSum= INT_MIN, sum;
 
@@ -84,6 +83,6 @@ int main() {
     displayNums(nums, n);
     
     // get the max subarray sum
-    int maxSum= calcMaxSubarraySum_v3(nums, n);
+    int maxSum= calcMaxSubarraySum_v1(nums, n);
     cout << "\n\nMax subarray sum: " << maxSum;
 }
