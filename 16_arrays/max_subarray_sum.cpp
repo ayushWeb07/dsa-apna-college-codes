@@ -16,7 +16,7 @@ void displayNums(int arr[], int n) {
     }
 }
 
-// version 1 -> bruteforce with TC O(n^3)
+// version 1 -> bruteforce | TC O(n^3)
 int calcMaxSubarraySum_v1(int arr[], int n) {
     int maxSum= INT_MIN, sum;
 
@@ -35,7 +35,7 @@ int calcMaxSubarraySum_v1(int arr[], int n) {
     return maxSum;
 }
 
-// O(n^2)
+// version 2 -> remove the inner k loop and instead accumulate the sum | TC O(n^2)
 int calcMaxSubarraySum_v2(int arr[], int n) {
     int maxSum= INT_MIN, sum;
 
@@ -51,7 +51,7 @@ int calcMaxSubarraySum_v2(int arr[], int n) {
     return maxSum;
 }
 
-// kadane's algo -> O(n)
+// version 3 -> kadane's algo | TC O(n)
 int calcMaxSubarraySum_v3(int arr[], int n) {
     int maxSum= INT_MIN, sum= 0;
 
@@ -83,6 +83,6 @@ int main() {
     displayNums(nums, n);
     
     // get the max subarray sum
-    int maxSum= calcMaxSubarraySum_v1(nums, n);
+    int maxSum= calcMaxSubarraySum_v2(nums, n);
     cout << "\n\nMax subarray sum: " << maxSum;
 }
