@@ -16,7 +16,7 @@ void displayPrices(int prices[], int n) {
 
 // version 1 -> bruteforce | TC O(n^2)
 int calculateMaxProfit_v1(int prices[], int n) {
-    int maxProfit= INT_MIN, currProfit;
+    int maxProfit= 0, currProfit;
 
     for (int i=0; i<n; i++) {
         for (int j=i+1; j<n; j++) {
@@ -25,7 +25,7 @@ int calculateMaxProfit_v1(int prices[], int n) {
         }
     }
 
-    return maxProfit < 0 ? 0 : maxProfit;
+    return maxProfit;
 }
 
 // version 2 -> DP | TC O(n)
