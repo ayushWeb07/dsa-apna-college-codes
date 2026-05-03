@@ -2,25 +2,25 @@
 #include <climits>
 using namespace std;
 
-void inputNums(int arr[], int n) {
+void inputPrices(int prices[], int n) {
     for(int i=0; i<n; i++) {
-        cin >> arr[i];
+        cin >> prices[i];
     }
 }
 
-void displayNums(int arr[], int n) {
+void displayPrices(int prices[], int n) {
     for(int i=0; i<n; i++) {
-        cout << arr[i] << " ";
+        cout << prices[i] << " ";
     }
 }
 
 // version 1 -> bruteforce | TC O(n^2)
-int calculateMaxProfit_v1(int arr[], int n) {
+int calculateMaxProfit_v1(int prices[], int n) {
     int maxProfit= INT_MIN, currProfit;
 
     for (int i=0; i<n; i++) {
         for (int j=i+1; j<n; j++) {
-            currProfit= arr[j] - arr[i];
+            currProfit= prices[j] - prices[i];
             maxProfit= max(maxProfit, currProfit);
         }
     }
@@ -29,12 +29,12 @@ int calculateMaxProfit_v1(int arr[], int n) {
 }
 
 // version 2 -> DP | TC O(n)
-int calculateMaxProfit_v2(int arr[], int n) {
+int calculateMaxProfit_v2(int prices[], int n) {
     int miniPrice= INT_MAX, maxProfit= 0, currProfit;
 
     for (int i=0; i<n; i++) {
-        miniPrice= min(miniPrice, arr[i]);
-        currProfit= arr[i] - miniPrice;
+        miniPrice= min(miniPrice, prices[i]);
+        currProfit= prices[i] - miniPrice;
         maxProfit= max(maxProfit, currProfit);
     }
 
@@ -47,16 +47,16 @@ int main() {
     cout << "Enter length: ";
     cin >> n;
 
-    // input nums
-    int nums[n];
-    cout << "Enter " << n << " numbers: ";
-    inputNums(nums, n);
+    // input prices
+    int prices[n];
+    cout << "Enter " << n << " prices: ";
+    inputPrices(prices, n);
 
-    // display nums
+    // display prices
     cout << "\nNumbers: ";
-    displayNums(nums, n);
+    displayPrices(prices, n);
 
     // get the max profit
-    int maxProfit= calculateMaxProfit_v2(nums, n);
+    int maxProfit= calculateMaxProfit_v2(prices, n);
     cout << "\n\nMax profit: " << maxProfit;
 }
