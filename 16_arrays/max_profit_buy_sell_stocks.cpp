@@ -14,7 +14,8 @@ void displayNums(int arr[], int n) {
     }
 }
 
-int calculateMaxProfit(int arr[], int n) {
+// version 1 -> bruteforce | TC O(n^2)
+int calculateMaxProfit_v1(int arr[], int n) {
     int maxProfit= INT_MIN, currProfit;
 
     for (int i=0; i<n; i++) {
@@ -25,6 +26,19 @@ int calculateMaxProfit(int arr[], int n) {
     }
 
     return maxProfit < 0 ? 0 : maxProfit;
+}
+
+// version 2 -> DP | TC O(n)
+int calculateMaxProfit_v2(int arr[], int n) {
+    int miniPrice= INT_MAX, maxProfit= 0, currProfit;
+
+    for (int i=0; i<n; i++) {
+        miniPrice= min(miniPrice, arr[i]);
+        currProfit= arr[i] - miniPrice;
+        maxProfit= max(maxProfit, currProfit);
+    }
+
+    return maxProfit;
 }
 
 int main() {
@@ -43,6 +57,6 @@ int main() {
     displayNums(nums, n);
 
     // get the max profit
-    int maxProfit= calculateMaxProfit(nums, n);
+    int maxProfit= calculateMaxProfit_v2(nums, n);
     cout << "\n\nMax profit: " << maxProfit;
 }
